@@ -1,0 +1,236 @@
+<script src="https://apis.google.com/js/api.js"></script>
+<center>
+<label for="site-search">Learn AllAbout</label>
+<input type="search" id="site-search" name="q"
+       aria-label="Search through site content">
+
+<button onclick="execute()">Search</button>
+<br><br>
+GOOGLE MAPS SECTION
+
+<head>
+        <title>Google Map</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <style>          
+          #map { 
+            height: 300px;    
+            width: 600px;            
+          }    
+        body {
+		background-color: #98FB98;
+        }      
+        </style> 
+	<br>
+	<button onclick="clearMarkers()">Clear Markers</button>       
+    </head>    
+    <body>
+
+        <div id="latclicked"></div>
+        <div id="longclicked"></div>
+        
+        //<div id="latmoved"></div>
+        //<div id="longmoved"></div>
+        
+        <div style="padding:10px">
+            <div id="map"></div>
+        </div>
+        
+        <script type="text/javascript">
+        var map;
+        
+	function clearMarkers() {
+	   for (var i = 0; i < markers.lenght; i++) {
+              markers[i].setMap(null);
+           }
+ 	}
+
+        function initMap() {                            
+            var latitude = 30.0672453; // YOUR LATITUDE VALUE
+            var longitude = -97.7339605; // YOUR LONGITUDE VALUE
+            
+            var myLatLng = {lat: latitude, lng: longitude};
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: myLatLng,
+              zoom: 9,
+              disableDoubleClickZoom: true, // disable the default map zoom on double click
+            });
+            
+            // Update lat/long value of div when anywhere in the map is clicked    
+            google.maps.event.addListener(map,'click',function(event) {                
+                document.getElementById('latclicked').innerHTML = event.latLng.lat();
+                document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+            });
+            
+            // Update lat/long value of div when you move the mouse over the map
+            //google.maps.event.addListener(map,'mousemove',function(event) {
+            //    document.getElementById('latmoved').innerHTML = event.latLng.lat();
+            //    document.getElementById('longmoved').innerHTML = event.latLng.lng();
+            //});
+                    
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              //title: 'Hello World'
+              
+              // setting latitude & longitude as title of the marker
+              // title is shown when you hover over the marker
+              title: latitude + ', ' + longitude 
+            });    
+            
+            // Update lat/long value of div when the marker is clicked
+            marker.addListener('click', function(event) {              
+              document.getElementById('latclicked').innerHTML = event.latLng.lat();
+              document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+            });
+            
+            // Create new marker on double click event on the map
+            google.maps.event.addListener(map,'dblclick',function(event) {
+                var marker = new google.maps.Marker({
+                  position: event.latLng, 
+                  map: map, 
+                  title: event.latLng.lat()+', '+event.latLng.lng()
+                });
+                
+                // Update lat/long value of div when the marker is clicked
+                marker.addListener('click', function() {
+                  document.getElementById('latclicked').innerHTML = event.latLng.lat();
+                  document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+                });            
+            });
+            
+            // Create new marker on single click event on the map 
+            google.maps.event.addListener(map,'click',function(event) {
+                var marker = new google.maps.Marker({
+                  position: event.latLng, 
+                  map: map, 
+                  title: event.latLng.lat()+', '+event.latLng.lng()
+                });                
+            }); 
+        }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnwERZ45OQ0g5O6yWkcfke3JsOZAw2AmY&callback=initMap"
+        async defer></script>
+</body>    
+
+<script src="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.min.js"></script>
+<div id="target"></div>
+
+WEATHER SECTION
+<body>
+   <img src="PA3_images/weather.jpg" alt="Weather Forecast" width="800" height="320">
+</body>
+
+<script>
+   document.write("<br>***Information is currently returned to the developer console*** <br>");
+   window.onload = function() {
+   const aeris = new AerisWeather('6uIQRVK5f7M2gNt9bFckZ', '8iMYYFJt0YRZSRGdlpMX8dkpDqPX1U4wATKnkBkf');
+   const request = aeris.api().endpoint('forecasts').place('31.01928, -97.876242').format('json').filter('day').limit('7');
+   request.get().then((result) => {
+      console.log(result);
+      });
+   };
+</script>
+
+
+<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+<div id="target"></div>
+<script>
+   document.write("<br>TOURIST SECTION<br>");
+   function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", "http://www.mapquestapi.com/search/v2/radius?key=KEY&maxMatches=4&origin=39.750307,-104.999472", true); 
+    xmlHttp.send(null);
+}
+
+</script>
+
+<body>
+   <img src="PA3_images/tourist.png" alt="Weather Forecast" width="800" height="320">
+</body>
+
+<script>
+  document.write("<br><br>YOUTUBE SECTION<br>");
+  loadClient();
+  execute();
+  /**
+   * Sample JavaScript code for youtube.search.list
+   * See instructions for running APIs Explorer code samples locally:
+   * https://developers.google.com/explorer-help/guides/code_samples#javascript
+   */
+
+  function loadClient() {
+    gapi.client.setApiKey("AIzaSyCnwERZ45OQ0g5O6yWkcfke3JsOZAw2AmY");
+    return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+        .then(function() { console.log("GAPI client loaded for API"); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+  // Make sure the client is loaded before calling this method.
+  function execute(search) {
+    return gapi.client.youtube.search.list({
+      "part": "snippet",
+      "maxResults": 25,
+      "q": "test"
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  gapi.load("client");
+</script>
+
+<div id="player"></div>
+<script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'M7lc1UVf-VE',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+    </script>
+</center>
+
