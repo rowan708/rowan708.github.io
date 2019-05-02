@@ -1,15 +1,14 @@
-﻿<script src="https://apis.google.com/js/api.js"></script>
+<script src="https://apis.google.com/js/api.js"></script>
 <center>
-<label for="site-search">Learn AllAbout</label>
+<label for="site-search"><font size='7'> Learn AllAbout<br></font></label>
 <input type="search" id="site-search" name="q"
        aria-label="Search through site content">
 
 <button onclick="execute()">Search</button>
-<br><br>
-	<a href="index.html" target="">
+
+	<a href="PA3_StartScreen.html" target="">
 	<input type="button" value="Home"></a>
 <br><br>
-GOOGLE MAPS SECTION
 
 <head>
         <title>AllAbout Results</title>
@@ -25,10 +24,10 @@ GOOGLE MAPS SECTION
         }      
         </style> 
 	<br>
-	<button onclick="clearMarkers()">Clear Markers</button>       
+	       
     </head>    
     <body>
-
+		
         <div id="latclicked"></div>
         <div id="longclicked"></div>
         
@@ -36,7 +35,7 @@ GOOGLE MAPS SECTION
         <div id="longmoved"></div>
         
         <div style="padding:10px">
-            <div id="map"></div>
+        <div id="map"></div>
         </div>
         
         <script type="text/javascript">
@@ -49,8 +48,8 @@ GOOGLE MAPS SECTION
  	}
 
         function initMap() {                            
-            let latitude = 29.71; // YOUR LATITUDE VALUE
-            let longitude = -95.35; // YOUR LONGITUDE VALUE
+            let latitude = 29.77841935207528; // YOUR LATITUDE VALUE
+            let longitude = -95.44739050812211; // YOUR LONGITUDE VALUE
             
             var myLatLng = {lat: latitude, lng: longitude};
             
@@ -71,7 +70,7 @@ GOOGLE MAPS SECTION
             //    document.getElementById('latmoved').innerHTML = event.latLng.lat();
             //    document.getElementById('longmoved').innerHTML = event.latLng.lng();
             //});
-                    
+            /*        
             var marker = new google.maps.Marker({
               position: myLatLng,
               map: map,
@@ -81,7 +80,7 @@ GOOGLE MAPS SECTION
               // title is shown when you hover over the marker
               title: latitude + ', ' + longitude 
             });    
-            
+            */
             // Update lat/long value of div when the marker is clicked
             marker.addListener('click', function(event) {              
               document.getElementById('latclicked').innerHTML = event.latLng.lat();
@@ -100,7 +99,8 @@ GOOGLE MAPS SECTION
                 marker.addListener('click', function() {
                   document.getElementById('latclicked').innerHTML = event.latLng.lat();
                   document.getElementById('longclicked').innerHTML =  event.latLng.lng();
-                });            
+                });  
+								
             });
             
             // Create new marker on single click event on the map 
@@ -120,9 +120,11 @@ GOOGLE MAPS SECTION
 <script src="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.min.js"></script>
 <div id="target"></div>
 
+<button onclick="clearMarkers()">Clear Markers</button>
+<br>
 <br>
 <body>
-	<font size="5"> Seven Day Forecast </font>
+	<font size="5"> FORECAST </font>
 	<p id='strToday'> </p>
 
 	<script>
@@ -143,6 +145,7 @@ GOOGLE MAPS SECTION
 		padding: 10px;
 	}
 	</style>
+	<!--
 	<table style="width:75%">
 	<tr>
 		<th> </th>
@@ -179,24 +182,14 @@ GOOGLE MAPS SECTION
 		<td> <center> 7 </center> </td>		
 	</tr>
 	<tr>
-		<td> Hi </td>
+		<td> Temp </td>
+		<td> <center> <var id='day1Temp'> </var> </center> </td>
 		<td> <center> 70° F </center> </td>
 		<td> <center> 70° F </center> </td>
 		<td> <center> 70° F </center> </td>
 		<td> <center> 70° F </center> </td>
 		<td> <center> 70° F </center> </td>
 		<td> <center> 70° F </center> </td>
-		<td> <center> 70° F </center> </td>
-	</tr>
-	<tr>
-		<td> Lo </td>
-		<td> <center> 69° F </center> </td>
-		<td> <center> 69° F </center> </td>
-		<td> <center> 69° F </center> </td>
-		<td> <center> 69° F </center> </td>
-		<td> <center> 69° F </center> </td>
-		<td> <center> 69° F </center> </td>
-		<td> <center> 69° F </center> </td>
 	</tr>
 	<tr>
 		<td> Precip </td>
@@ -224,14 +217,17 @@ GOOGLE MAPS SECTION
       console.log(result);
       });
    };
+   
+   document.write(request);	
 </script>
-
-
+-->
+<img src='weather_forecast_houston.png'> </img>
+<br>
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 <div id="target"></div>
 <script>
-   document.write("<br>TOURIST SECTION<br>");
+   document.write("<br><font size='5'>POPULAR PLACES</font><br>");
    function httpGetAsync(theUrl, callback)
 {
     var xmlHttp = new XMLHttpRequest();
@@ -244,13 +240,13 @@ GOOGLE MAPS SECTION
 }
 
 </script>
-
+<br>
 <body>
-   <img src="PA3_images/tourist.png" alt="Weather Forecast" width="800" height="320">
-</body>
+   <img src="tourist_houston.png" alt="Tourist Stuff" width="800" height="320">
+</body>	
 
 <script>
-  document.write("<br><br>YOUTUBE SECTION<br>");
+  document.write("<br><br><font size='5'> POPULAR VIDEOS</font><br>");
   loadClient();
   execute();
   /**
