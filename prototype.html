@@ -240,6 +240,30 @@
 }
 
 </script>
+	
+<script>
+const yelp = require('yelp-fusion');
+
+// Place holder for Yelp Fusion's API Key. Grab them
+// from https://www.yelp.com/developers/v3/manage_app
+const apiKey = 'haVaFxg5M-FL-bJkMwuJRd_3xeovGAtDLrPtLyzX2_PcsR_0a3VgDF9yyn5KFYSvK3mHeYJyDGg7ym5fj9d_mxxiSCdndG1KM36c87hTCpbeajqgPUgFmeceYxvOXHYx';
+
+const searchRequest = {
+  //term:'Four Barrel Coffee',
+  location: 'san francisco, ca'
+};
+
+const client = yelp.client(apiKey);
+
+client.search(searchRequest).then(response => {
+  const firstResult = response.jsonBody.businesses[0];
+  const prettyJson = JSON.stringify(firstResult, null, 4);
+  console.log(prettyJson);
+}).catch(e => {
+  console.log(e);
+});	
+</script>
+	
 <br>
 <body>
    <img src="tourist_houston.png" alt="Tourist Stuff" width="800" height="320">
