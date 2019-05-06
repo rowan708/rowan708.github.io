@@ -55,6 +55,13 @@
         function initMap() {                            
             let latitude = 29.77841935207528; // YOUR LATITUDE VALUE
             let longitude = -95.44739050812211; // YOUR LONGITUDE VALUE
+		if (typeof variable !== 'undefined') {
+    		    let latitude = localStorage.getItem("latitude");
+		}
+		if (typeof variable !== 'undefined') {
+ 	 	    let longitude = localStorage.getItem("longitude");
+		}	
+            
             
             var myLatLng = {lat: latitude, lng: longitude};
             
@@ -70,6 +77,7 @@
                 document.getElementById('longclicked').innerHTML =  event.latLng.lng();
 		localStorage.setItem("latitude", event.latLng.lat());
 		localStorage.setItem("longitude", event.latLng.lng());
+		window.location.reload();
             });
                     
             var marker = new google.maps.Marker({
@@ -87,6 +95,7 @@
               document.getElementById('longclicked').innerHTML =  event.latLng.lng();
 	      localStorage.setItem("latitude", event.latLng.lat());
 	      localStorage.setItem("longitude", event.latLng.lng());
+	      window.location.reload();
             });
             
             // Create new marker on double click event on the map
