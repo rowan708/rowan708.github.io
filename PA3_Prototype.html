@@ -6,13 +6,13 @@
 <input type="search" id="site-search" name="q"
        aria-label="Search through site content">
 
-<button onclick="Test()">Search</button>
+<button onclick="getnewInfo()">Search</button>
 	
 	<a href="index.html" target="">
 	<input type="button" value="Home"></a>
 <br><br>
 	<script>
-	//getNewInfo();	
+	getNewInfo();	
 	</script>
 
 <head>
@@ -68,19 +68,14 @@
             google.maps.event.addListener(map,'click',function(event) {                
                 document.getElementById('latclicked').innerHTML = event.latLng.lat();
                 document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+		localStorage.setItem("latitude", event.latLng.lat());
+		localStorage.setItem("longitude", event.latLng.lng());
             });
-            
-            // Update lat/long value of div when you move the mouse over the map
-            //google.maps.event.addListener(map,'mousemove',function(event) {
-            //    document.getElementById('latmoved').innerHTML = event.latLng.lat();
-            //    document.getElementById('longmoved').innerHTML = event.latLng.lng();
-            //});
                     
             var marker = new google.maps.Marker({
               position: myLatLng,
               map: map,
-              //title: 'Hello World'
-              
+              //title: 'Hello World'            
               // setting latitude & longitude as title of the marker
               // title is shown when you hover over the marker
               title: latitude + ', ' + longitude 
@@ -90,6 +85,8 @@
             marker.addListener('click', function(event) {              
               document.getElementById('latclicked').innerHTML = event.latLng.lat();
               document.getElementById('longclicked').innerHTML =  event.latLng.lng();
+	      localStorage.setItem("latitude", event.latLng.lat());
+	      localStorage.setItem("longitude", event.latLng.lng());
             });
             
             // Create new marker on double click event on the map
@@ -125,8 +122,6 @@
 
 <script src="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.min.js"></script>
 <div id="target"></div>
-
-<button onclick="clearMarkers()">Clear Markers</button>
 <br>
 <br>
 <body>
@@ -289,8 +284,8 @@
 
 <script>
   document.write("<br><br><font size='5'> POPULAR VIDEOS</font><br>");
-  loadClient();
-  execute();
+  //loadClient();
+  //execute();
   /**
    * Sample JavaScript code for youtube.search.list
    * See instructions for running APIs Explorer code samples locally:
