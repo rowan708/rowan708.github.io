@@ -250,7 +250,8 @@
    document.write("<br>***Information is currently returned to the developer console*** <br>");
    window.onload = function() {
    const aeris = new AerisWeather('6uIQRVK5f7M2gNt9bFckZ', '8iMYYFJt0YRZSRGdlpMX8dkpDqPX1U4wATKnkBkf');
-   const request = aeris.api().endpoint('forecasts').place('31.01928, -97.876242').format('json').filter('day').limit('7');
+   var latlong = String(localStorage.getItem("latitude")) + ', ' + String(localStorage.getItem("longitude"));
+   const request = aeris.api().endpoint('forecasts').place(latlong).format('json').filter('day').limit('7');
    request.get().then((result) => {
       console.log(result);
       });
