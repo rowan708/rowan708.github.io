@@ -6,7 +6,13 @@
        aria-label="Search through site content">
 
 	   <a href="PA3_Prototype.html" target="">
-	   <input type="button" value="Search"></a>
+	   <input type="button" onclick="xferInfo()" value="Search"></a>
+	   <script>
+			function xferInfo() {
+				var typedLocation = document.getElementById("site-search").value;
+				localStorage.setItem("search", typedLocation);
+			}
+	   </script>
 <label><br><b>Enter a Location</b><br></label>
 <br><br>
 
