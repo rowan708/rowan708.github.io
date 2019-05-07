@@ -251,12 +251,12 @@
 	<tr>
 		<td> <center>Humidity (%)</center> </td>
 		<td> <center> <p id="day1h"></p> </center> </td>
-		<td> <center> <p id="day1h"></p> </center> </td>
-		<td> <center> <p id="day1h"></p> </center> </td>
-		<td> <center> <p id="day1h"></p> </center> </td>
-		<td> <center> <p id="day1h"></p> </center> </td>
-		<td> <center> <p id="day1h"></p> </center> </td>
-		<td> <center> <p id="day1h"></p> </center> </td>
+		<td> <center> <p id="day2h"></p> </center> </td>
+		<td> <center> <p id="day3h"></p> </center> </td>
+		<td> <center> <p id="day4h"></p> </center> </td>
+		<td> <center> <p id="day5h"></p> </center> </td>
+		<td> <center> <p id="day6h"></p> </center> </td>
+		<td> <center> <p id="day7h"></p> </center> </td>
 	</tr>
 
 	</table>
@@ -283,13 +283,13 @@
 	document.getElementById("day6").innerHTML = result.data[0].periods[5].avgTempF;
 	document.getElementById("day7").innerHTML = result.data[0].periods[6].avgTempF;
 
-	document.getElementById("day1w").innerHTML = result.data[0].periods[0].weather;
-	document.getElementById("day2w").innerHTML = result.data[0].periods[1].weather;
-	document.getElementById("day3w").innerHTML = result.data[0].periods[2].weather;
-	document.getElementById("day4w").innerHTML = result.data[0].periods[3].weather;
-	document.getElementById("day5w").innerHTML = result.data[0].periods[4].weather;
-	document.getElementById("day6w").innerHTML = result.data[0].periods[5].weather;
-	document.getElementById("day7w").innerHTML = result.data[0].periods[6].weather;
+	document.getElementById("day1w").innerHTML = result.data[0].periods[0].cloudsCoded;
+	document.getElementById("day2w").innerHTML = result.data[0].periods[1].cloudsCoded;
+	document.getElementById("day3w").innerHTML = result.data[0].periods[2].cloudsCoded;
+	document.getElementById("day4w").innerHTML = result.data[0].periods[3].cloudsCoded;
+	document.getElementById("day5w").innerHTML = result.data[0].periods[4].cloudsCoded;
+	document.getElementById("day6w").innerHTML = result.data[0].periods[5].cloudsCoded;
+	document.getElementById("day7w").innerHTML = result.data[0].periods[6].cloudsCoded;
 
 	document.getElementById("day1h").innerHTML = result.data[0].periods[0].humidity;
 	document.getElementById("day2h").innerHTML = result.data[0].periods[1].humidity;
