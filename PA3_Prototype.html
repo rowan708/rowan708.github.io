@@ -240,13 +240,13 @@
 	</tr>
 	<tr>
 		<td> <center>Temp</center> </td>
-		<td> <center> 70° F </center> </td>
-		<td> <center> 70° F </center> </td>
-		<td> <center> 70° F </center> </td>
-		<td> <center> 70° F </center> </td>
-		<td> <center> 70° F </center> </td>
-		<td> <center> 70° F </center> </td>
-		<td> <center> 70° F </center> </td>
+		<td> <center> <script> windows.result.data[0].periods[0].avgTempF </script> </center> </td>
+		<td> <center> <script> windows.result.data[0].periods[1].avgTempF </script> </center> </td>
+		<td> <center> <script> windows.result.data[0].periods[2].avgTempF </script> </center> </td>
+		<td> <center> <script> windows.result.data[0].periods[3].avgTempF </script> </center> </td>
+		<td> <center> <script> windows.result.data[0].periods[4].avgTempF </script> </center> </td>
+		<td> <center> <script> windows.result.data[0].periods[5].avgTempF </script> </center> </td>
+		<td> <center> <script> windows.result.data[0].periods[6].avgTempF </script> </center> </td>
 	</tr>
 	<tr>
 		<td> <center>Precip</center> </td>
@@ -275,7 +275,8 @@
      var request = aeris.api().endpoint('forecasts').place(latlong).format('json').filter('day').limit('7');
      request.get().then((result) => {
         console.log(result);
-	document.write(result.data[0].periods[0].avgTempF + ' ' + result.data[0].periods[0].avgTempC);
+	window.result = result;
+	//document.write(result.data[0].periods[0].avgTempF + ' ' + result.data[0].periods[0].avgTempC);
 	//
      });    
    };	
