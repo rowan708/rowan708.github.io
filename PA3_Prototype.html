@@ -198,16 +198,17 @@
 
 		<script> 
 		var imgCtrl = localStorage.getItem("w1");
-		if( imgCtrl == "BK" || imgCtrl == "SC"){
+		if( imgCtrl == 'BK' || imgCtrl == 'SC'){
 			document.getElementById("weatherimg0").src = "cloudy.png";
 		}
-		else if ( imgCtrl == "FW") {
+		else if ( imgCtrl == 'FW') {
 			document.getElementById("weatherimg0").src = "sunny.png";
 		}
-		else if ( imgCtrl == "OV") {
+		else if ( imgCtrl == 'OV') {
 			document.getElementById("weatherimg0").src = "rainy.png";		
 		}
 		else {
+			document.write(localStorage.getItem("w1");
 			document.getElementById("weatherimg0").src = "sunny.png";
 		}
 		</script> </center> </td>
@@ -266,7 +267,6 @@
 <!-- -----------------------------------------------WEATHER SECTION------------------------ -->
 
 <script>
-   document.write("<br>***Information is currently returned to the developer console*** <br>");
    window.onload = function() {
      const aeris = new AerisWeather('6uIQRVK5f7M2gNt9bFckZ', '8iMYYFJt0YRZSRGdlpMX8dkpDqPX1U4wATKnkBkf');
      var latlong = String(localStorage.getItem("latitude")) + ', ' + String(localStorage.getItem("longitude"));
