@@ -241,22 +241,22 @@
 	<tr>
 		<td> <center>Temp</center> </td>
 		<td> <center> <p id="day1"></p> </center> </td>
-		<td> <center> <script> localStorage.getItem("day2temp") </script> </center> </td>
-		<td> <center> <script> localStorage.getItem("day3temp") </script> </center> </td>
-		<td> <center> <script> localStorage.getItem("day4temp") </script> </center> </td>
-		<td> <center> <script> localStorage.getItem("day5temp") </script> </center> </td>
-		<td> <center> <script> localStorage.getItem("day6temp") </script> </center> </td>
-		<td> <center> <script> localStorage.getItem("day7temp") </script> </center> </td>
+		<td> <center> <p id="day2"></p> </center> </td>
+		<td> <center> <p id="day3"></p> </center> </td>
+		<td> <center> <p id="day4"></p> </center> </td>
+		<td> <center> <p id="day5"></p> </center> </td>
+		<td> <center> <p id="day6"></p> </center> </td>
+		<td> <center> <p id="day7"></p> </center> </td>
 	</tr>
 	<tr>
-		<td> <center>Precip</center> </td>
-		<td> <center> 20% Rain </center> </td>
-		<td> <center> 20% Snow </center> </td>
-		<td> <center> 20% Sleet </center> </td>
-		<td> <center> 20% Sun </center> </td>
-		<td> <center> 20% Cloud </center> </td>
-		<td> <center> 20% Rain </center> </td>
-		<td> <center> 20% Rain </center> </td>
+		<td> <center>Humidity (%)</center> </td>
+		<td> <center> <p id="day1h"></p> </center> </td>
+		<td> <center> <p id="day1h"></p> </center> </td>
+		<td> <center> <p id="day1h"></p> </center> </td>
+		<td> <center> <p id="day1h"></p> </center> </td>
+		<td> <center> <p id="day1h"></p> </center> </td>
+		<td> <center> <p id="day1h"></p> </center> </td>
+		<td> <center> <p id="day1h"></p> </center> </td>
 	</tr>
 
 	</table>
@@ -276,15 +276,31 @@
      request.get().then((result) => {
         console.log(result);
 	document.getElementById("day1").innerHTML = result.data[0].periods[0].avgTempF;
-	localStorage.setItem("day2temp", result.data[0].periods[1].avgTempF);
-	localStorage.setItem("day3temp", result.data[0].periods[2].avgTempF);
-	localStorage.setItem("day4temp", result.data[0].periods[3].avgTempF);
-	localStorage.setItem("day5temp", result.data[0].periods[4].avgTempF);
-	localStorage.setItem("day6temp", result.data[0].periods[5].avgTempF);
-	localStorage.setItem("day7temp", result.data[0].periods[6].avgTempF);
+	document.getElementById("day2").innerHTML = result.data[0].periods[1].avgTempF;
+	document.getElementById("day3").innerHTML = result.data[0].periods[2].avgTempF;
+	document.getElementById("day4").innerHTML = result.data[0].periods[3].avgTempF;
+	document.getElementById("day5").innerHTML = result.data[0].periods[4].avgTempF;
+	document.getElementById("day6").innerHTML = result.data[0].periods[5].avgTempF;
+	document.getElementById("day7").innerHTML = result.data[0].periods[6].avgTempF;
+
+	document.getElementById("day1w").innerHTML = result.data[0].periods[0].weather;
+	document.getElementById("day2w").innerHTML = result.data[0].periods[1].weather;
+	document.getElementById("day3w").innerHTML = result.data[0].periods[2].weather;
+	document.getElementById("day4w").innerHTML = result.data[0].periods[3].weather;
+	document.getElementById("day5w").innerHTML = result.data[0].periods[4].weather;
+	document.getElementById("day6w").innerHTML = result.data[0].periods[5].weather;
+	document.getElementById("day7w").innerHTML = result.data[0].periods[6].weather;
+
+	document.getElementById("day1h").innerHTML = result.data[0].periods[0].humidity;
+	document.getElementById("day2h").innerHTML = result.data[0].periods[1].humidity;
+	document.getElementById("day3h").innerHTML = result.data[0].periods[2].humidity;
+	document.getElementById("day4h").innerHTML = result.data[0].periods[3].humidity;
+	document.getElementById("day5h").innerHTML = result.data[0].periods[4].humidity;
+	document.getElementById("day6h").innerHTML = result.data[0].periods[5].humidity;
+	document.getElementById("day7h").innerHTML = result.data[0].periods[6].humidity;
+
      });    
-   };
-   document.getElementById("day1").innerHTML = localStorage.getItem("day1temp");	
+   };	
 </script>
 <br>
 
