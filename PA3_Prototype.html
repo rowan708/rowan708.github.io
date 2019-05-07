@@ -273,6 +273,8 @@
    const aeris = new AerisWeather('6uIQRVK5f7M2gNt9bFckZ', '8iMYYFJt0YRZSRGdlpMX8dkpDqPX1U4wATKnkBkf');
    var latlong = String(localStorage.getItem("latitude")) + ', ' + String(localStorage.getItem("longitude"));
    const request = aeris.api().endpoint('forecasts').place(latlong).format('json').filter('day').limit('7');
+   var obj = JSON.parse(request);
+   document.write(obj.data[0].periods[0].avgTempF + ' ' + obj.data[0].periods[0].avgTempC);
    request.get().then((result) => {
       console.log(result);
       });
@@ -293,8 +295,8 @@ const yelp = require('yelp-fusion');
 const apiKey = 'haVaFxg5M-FL-bJkMwuJRd_3xeovGAtDLrPtLyzX2_PcsR_0a3VgDF9yyn5KFYSvK3mHeYJyDGg7ym5fj9d_mxxiSCdndG1KM36c87hTCpbeajqgPUgFmeceYxvOXHYx';
 
 const searchRequest = {
-  latitude: parseFloat(localStorage.getItem("latitude"),
-  longitude: parseFloat(localStorage.getItem("longitude")
+  latitude: parseFloat(localStorage.getItem("latitude")),
+  longitude: parseFloat(localStorage.getItem("longitude"))
 };
 
 const client = yelp.client(apiKey);
@@ -307,6 +309,7 @@ client.search(searchRequest).then(response => {
   console.log(e);
 });
 </script>
+
 <body>
    <img src="tourist_houston.png" alt="Tourist Stuff" width="800" height="320">
 </body>	
