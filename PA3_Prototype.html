@@ -155,7 +155,8 @@
 	localStorage.setItem("day6temp", result.data[0].periods[5].avgTempF);
 	localStorage.setItem("day7temp", result.data[0].periods[6].avgTempF);
      });    
-   };	
+   };
+   document.getElementById("day1").innterHTML = localStorage.getItem("day1temp");	
 </script>
 <br>
 
@@ -262,7 +263,7 @@
 	</tr>
 	<tr>
 		<td> <center>Temp</center> </td>
-		<td> <center> <script> localStorage.getItem("day1temp") </script> </center> </td>
+		<td> <center> <p id="day1"></p> </center> </td>
 		<td> <center> <script> localStorage.getItem("day2temp") </script> </center> </td>
 		<td> <center> <script> localStorage.getItem("day3temp") </script> </center> </td>
 		<td> <center> <script> localStorage.getItem("day4temp") </script> </center> </td>
