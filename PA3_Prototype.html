@@ -195,19 +195,17 @@
 	<tr>
 		<td> <center>Gphx</center> </td>
 		<td> <center> <div><img id="weatherimg0"/> </div>
+
 		<script> 
-		var imgCtrl = "asdfg"
-		if( imgCtrl == "cloudy"){
+		var imgCtrl = localStorage.getItem("w1");
+		if( imgCtrl == "BK" || imgCtrl == "SC"){
 			document.getElementById("weatherimg0").src = "cloudy.png";
 		}
-		else if ( imgCtrl == "sunny") {
+		else if ( imgCtrl == "FW") {
 			document.getElementById("weatherimg0").src = "sunny.png";
 		}
-		else if ( imgCtrl == "rainy") {
+		else if ( imgCtrl == "OV") {
 			document.getElementById("weatherimg0").src = "rainy.png";		
-		}
-		else if ( imgCtrl == "snowy") {
-			document.getElementById("weatherimg0").src = "snowy.png";
 		}
 		else {
 			document.getElementById("weatherimg0").src = "sunny.png";
@@ -283,13 +281,13 @@
 	document.getElementById("day6").innerHTML = result.data[0].periods[5].avgTempF;
 	document.getElementById("day7").innerHTML = result.data[0].periods[6].avgTempF;
 
-	document.getElementById("day1w").innerHTML = result.data[0].periods[0].cloudsCoded;
-	document.getElementById("day2w").innerHTML = result.data[0].periods[1].cloudsCoded;
-	document.getElementById("day3w").innerHTML = result.data[0].periods[2].cloudsCoded;
-	document.getElementById("day4w").innerHTML = result.data[0].periods[3].cloudsCoded;
-	document.getElementById("day5w").innerHTML = result.data[0].periods[4].cloudsCoded;
-	document.getElementById("day6w").innerHTML = result.data[0].periods[5].cloudsCoded;
-	document.getElementById("day7w").innerHTML = result.data[0].periods[6].cloudsCoded;
+	localStorage.setItem("w1", result.data[0].periods[0].cloudsCoded);
+	localStorage.setItem("w2", result.data[0].periods[1].cloudsCoded);
+	localStorage.setItem("w3", result.data[0].periods[2].cloudsCoded);
+	localStorage.setItem("w4", result.data[0].periods[3].cloudsCoded);
+	localStorage.setItem("w5", result.data[0].periods[4].cloudsCoded);
+	localStorage.setItem("w6", result.data[0].periods[5].cloudsCoded);
+	localStorage.setItem("w7", result.data[0].periods[6].cloudsCoded);
 
 	document.getElementById("day1h").innerHTML = result.data[0].periods[0].humidity;
 	document.getElementById("day2h").innerHTML = result.data[0].periods[1].humidity;
