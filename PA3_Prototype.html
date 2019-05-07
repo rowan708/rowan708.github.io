@@ -272,12 +272,12 @@
    window.onload = function() {
    const aeris = new AerisWeather('6uIQRVK5f7M2gNt9bFckZ', '8iMYYFJt0YRZSRGdlpMX8dkpDqPX1U4wATKnkBkf');
    var latlong = String(localStorage.getItem("latitude")) + ', ' + String(localStorage.getItem("longitude"));
-   const request = aeris.api().endpoint('forecasts').place(latlong).format('json').filter('day').limit('7');
-   request.get().then((result) => {
-      console.log(result);
-      });
-   };
-   var obj = JSON.parse(result);
+   var request = aeris.api().endpoint('forecasts').place(latlong).format('json').filter('day').limit('7');
+   console.log(request.get());//.then((result) => {
+      //console.log(result);
+      //});
+   //};
+   var obj = JSON.parse(request.get());
    document.write(obj.data[0].periods[0].avgTempF + ' ' + obj.data[0].periods[0].avgTempC);
   	
 </script>
