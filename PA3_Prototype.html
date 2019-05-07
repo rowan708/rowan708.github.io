@@ -53,13 +53,13 @@
  	}
 
         function initMap() {                                
-		if (typeof variable !== 'undefined') {
+		if (typeof localStorage.getItem("latitude") !== 'undefined') {
     		    let latitude = localStorage.getItem("latitude");
 		}
 		else {
 		    let latitude = 29.77841935207528; // YOUR LATITUDE VALUE
 		}
-		if (typeof variable !== 'undefined') {
+		if (typeof localStorage.getItem("longitude") !== 'undefined') {
  	 	    let longitude = localStorage.getItem("longitude");
 		}	
 		else {
