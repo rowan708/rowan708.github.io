@@ -137,6 +137,24 @@
         async defer></script>
 </body>    
 
+<!-- -----------------------------------------------WEATHER SECTION------------------------ -->
+
+<script>
+   document.write("<br>***Information is currently returned to the developer console*** <br>");
+   window.onload = function() {
+     const aeris = new AerisWeather('6uIQRVK5f7M2gNt9bFckZ', '8iMYYFJt0YRZSRGdlpMX8dkpDqPX1U4wATKnkBkf');
+     var latlong = String(localStorage.getItem("latitude")) + ', ' + String(localStorage.getItem("longitude"));
+     var request = aeris.api().endpoint('forecasts').place(latlong).format('json').filter('day').limit('7');
+     request.get().then((result) => {
+        console.log(result);
+	window.result = result;
+	//document.write(result.data[0].periods[0].avgTempF + ' ' + result.data[0].periods[0].avgTempC);
+	//
+     });    
+   };	
+</script>
+<br>
+
 <!-- -----------------------------------------------WEATHER DISPLAY SECTION------------------------ -->
 
 <script src="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.min.js"></script>
@@ -264,24 +282,6 @@
     //<img src="PA3_images/weather.jpg" alt="Weather Forecast" width="800" height="320">
     </script>
 </body>
-
-<!-- -----------------------------------------------WEATHER SECTION------------------------ -->
-
-<script>
-   document.write("<br>***Information is currently returned to the developer console*** <br>");
-   window.onload = function() {
-     const aeris = new AerisWeather('6uIQRVK5f7M2gNt9bFckZ', '8iMYYFJt0YRZSRGdlpMX8dkpDqPX1U4wATKnkBkf');
-     var latlong = String(localStorage.getItem("latitude")) + ', ' + String(localStorage.getItem("longitude"));
-     var request = aeris.api().endpoint('forecasts').place(latlong).format('json').filter('day').limit('7');
-     request.get().then((result) => {
-        console.log(result);
-	window.result = result;
-	//document.write(result.data[0].periods[0].avgTempF + ' ' + result.data[0].periods[0].avgTempC);
-	//
-     });    
-   };	
-</script>
-<br>
 
 <!-- -----------------------------------------------TOURIST SECTION------------------------ -->
 
