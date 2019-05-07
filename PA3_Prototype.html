@@ -280,30 +280,12 @@
    
    document.write(request);	
 </script>
-
-<br>
-<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
-<div id="target"></div>
-<script>
-   document.write("<br><font size='5'>POPULAR PLACES</font><br>");
-   function httpGetAsync(theUrl, callback)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", "http://www.mapquestapi.com/search/v2/radius?key=KEY&maxMatches=4&origin=39.750307,-104.999472", true); 
-    xmlHttp.send(null);
-}
-
-</script>
 <br>
 
 <!-- -----------------------------------------------TOURIST SECTION------------------------ -->
 
 <script>
+document.write("<br><font size='5'>POPULAR PLACES</font><br>");
 const yelp = require('yelp-fusion');
 
 // Place holder for Yelp Fusion's API Key. Grab them
@@ -311,8 +293,8 @@ const yelp = require('yelp-fusion');
 const apiKey = 'haVaFxg5M-FL-bJkMwuJRd_3xeovGAtDLrPtLyzX2_PcsR_0a3VgDF9yyn5KFYSvK3mHeYJyDGg7ym5fj9d_mxxiSCdndG1KM36c87hTCpbeajqgPUgFmeceYxvOXHYx';
 
 const searchRequest = {
-  //term:'Four Barrel Coffee',
-  location: 'san francisco, ca'
+  latitude: parseFloat(localStorage.getItem("latitude"),
+  longitude: parseFloat(localStorage.getItem("longitude")
 };
 
 const client = yelp.client(apiKey);
