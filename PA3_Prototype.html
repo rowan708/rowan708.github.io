@@ -52,18 +52,20 @@
            }
  	}
 
-        function initMap() {                                
+        function initMap() {    
+		var latitude;
+		var longitude;                            
 		if (typeof localStorage.getItem("latitude") !== 'undefined') {
-    		    let latitude = localStorage.getItem("latitude");
+    		    latitude = localStorage.getItem("latitude");
 		}
 		else {
-		    let latitude = 29.77841935207528; // YOUR LATITUDE VALUE
+		    latitude = 29.77841935207528; // YOUR LATITUDE VALUE
 		}
 		if (typeof localStorage.getItem("longitude") !== 'undefined') {
- 	 	    let longitude = localStorage.getItem("longitude");
+ 	 	    longitude = localStorage.getItem("longitude");
 		}	
 		else {
-		    let longitude = -95.44739050812211; // YOUR LONGITUDE VALUE
+		    longitude = -95.44739050812211; // YOUR LONGITUDE VALUE
 		}
             
             
