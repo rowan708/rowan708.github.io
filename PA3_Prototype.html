@@ -1,5 +1,5 @@
 ﻿<script src="https://apis.google.com/js/api.js"></script>
-<script src="scripts.js"></script>
+
 
 <center>
 <label for="site-search"><font size='7'> Learn AllAbout<br></font></label>
@@ -12,7 +12,10 @@
 	<input type="button" value="Home"></a>
 <br><br>
 	<script>
-	getNewInfo();	
+	function getNewInfo() {
+	  var newLocation = document.getElementById("site-search").value;
+	  localStorage.setItem("search", newLocation);
+	}	
 	</script>
 
 <head>
@@ -43,6 +46,24 @@
         <div id="map"></div>
         </div>
         
+<!-- -------------------------------FOR GET COMMANDS ---------------------------- -->
+
+<script>
+  var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, true );            
+        anHttpRequest.send( null );
+    }
+  }
+</script>
+
+
 <!-- -----------------------------------------------MAP SECTION------------------------ -->
 
         <script type="text/javascript">
@@ -152,8 +173,7 @@
 			var year = today.getFullYear();
 			var month = today.getMonth() + 1;
 			var day = today.getDate();
-			return (month + "/" + day);
-			
+			return (month + "/" + day);		
 		}
 	</script>
 	<style>
@@ -316,7 +336,7 @@
 
 	</tr>
 	<tr>
-		<td> <center>Temp</center> </td>
+		<td> <center>Temp (F)</center> </td>
 		<td> <center> <p id="day1"></p> </center> </td>
 		<td> <center> <p id="day2"></p> </center> </td>
 		<td> <center> <p id="day3"></p> </center> </td>
@@ -384,6 +404,13 @@
 
 <script>
 document.write("<br><font size='5'>POPULAR PLACES</font><br>");
+
+var client = new HttpClient();
+client.get('https://api.yelp.com/v3/businesses/search', function(response) {
+    console.log(response);
+});
+
+/*
 const yelp = require('yelp-fusion');
 
 // Place holder for Yelp Fusion's API Key. Grab them
@@ -404,6 +431,7 @@ client.search(searchRequest).then(response => {
 }).catch(e => {
   console.log(e);
 });
+*/
 </script>
 
 <body>
@@ -414,8 +442,6 @@ client.search(searchRequest).then(response => {
 
 <script>
   document.write("<br><br><font size='5'> POPULAR VIDEOS</font><br>");
-  //loadClient();
-  //execute();
   /**
    * Sample JavaScript code for youtube.search.list
    * See instructions for running APIs Explorer code samples locally:
