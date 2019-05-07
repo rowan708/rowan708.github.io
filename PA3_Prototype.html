@@ -1,6 +1,4 @@
 ﻿<script src="https://apis.google.com/js/api.js"></script>
-<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-
 
 <center>
 <label for="site-search"><font size='7'> Learn AllAbout<br></font></label>
@@ -473,9 +471,12 @@ client.search(searchRequest).then(response => {
               function(err) { console.error("Execute error", err); });
   }
   gapi.load("client");
+  <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
   loadClient();
   execute();
 </script>
+
+
 
 <div id="player"></div>
 <script>
