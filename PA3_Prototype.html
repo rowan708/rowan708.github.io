@@ -147,9 +147,13 @@
      var request = aeris.api().endpoint('forecasts').place(latlong).format('json').filter('day').limit('7');
      request.get().then((result) => {
         console.log(result);
-	window.result = result;
-	//document.write(result.data[0].periods[0].avgTempF + ' ' + result.data[0].periods[0].avgTempC);
-	//
+	localStorage.setItem("day1temp", result.data[0].periods[0].avgTempF);
+	localStorage.setItem("day2temp", result.data[0].periods[1].avgTempF);
+	localStorage.setItem("day3temp", result.data[0].periods[2].avgTempF);
+	localStorage.setItem("day4temp", result.data[0].periods[3].avgTempF);
+	localStorage.setItem("day5temp", result.data[0].periods[4].avgTempF);
+	localStorage.setItem("day6temp", result.data[0].periods[5].avgTempF);
+	localStorage.setItem("day7temp", result.data[0].periods[6].avgTempF);
      });    
    };	
 </script>
@@ -258,13 +262,13 @@
 	</tr>
 	<tr>
 		<td> <center>Temp</center> </td>
-		<td> <center> <script> window.result.data[0].periods[0].avgTempF </script> </center> </td>
-		<td> <center> <script> window.result.data[0].periods[1].avgTempF </script> </center> </td>
-		<td> <center> <script> window.result.data[0].periods[2].avgTempF </script> </center> </td>
-		<td> <center> <script> window.result.data[0].periods[3].avgTempF </script> </center> </td>
-		<td> <center> <script> window.result.data[0].periods[4].avgTempF </script> </center> </td>
-		<td> <center> <script> window.result.data[0].periods[5].avgTempF </script> </center> </td>
-		<td> <center> <script> window.result.data[0].periods[6].avgTempF </script> </center> </td>
+		<td> <center> <script> localStorage.getItem("day1temp") </script> </center> </td>
+		<td> <center> <script> localStorage.getItem("day2temp") </script> </center> </td>
+		<td> <center> <script> localStorage.getItem("day3temp") </script> </center> </td>
+		<td> <center> <script> localStorage.getItem("day4temp") </script> </center> </td>
+		<td> <center> <script> localStorage.getItem("day5temp") </script> </center> </td>
+		<td> <center> <script> localStorage.getItem("day6temp") </script> </center> </td>
+		<td> <center> <script> localStorage.getItem("day7temp") </script> </center> </td>
 	</tr>
 	<tr>
 		<td> <center>Precip</center> </td>
